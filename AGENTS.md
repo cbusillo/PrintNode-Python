@@ -1,0 +1,70 @@
+# AGENTS.md
+
+## Project Mission
+
+This repository is maintained as a careful, community-oriented Python client for the PrintNode API. Prioritize correctness, compatibility, clear releases, and a learning-friendly development workflow.
+
+## Branch and PR Rules
+
+- The default branch is `main`.
+- Do not commit directly to `main`.
+- Use a focused branch and pull request for every meaningful change.
+- Keep pull requests small enough to review.
+- Require tests and CI before merge whenever the change affects code, packaging, or release behavior.
+- Treat default-branch migration and repository settings as explicit maintenance tasks.
+- Do not push branches or open pull requests unless the user explicitly asks for that action.
+
+## Python Project Standards
+
+- Use `pyproject.toml` as the project source of truth.
+- Use `uv` for local development, dependency locking, testing, and builds.
+- Keep `uv.lock` committed for reproducible development and CI once `uv` is introduced.
+- Preserve the existing `printnodeapi` import path unless a breaking-change pull request explicitly changes it.
+- Prefer modern Python packaging practices while avoiding unnecessary rewrites.
+
+## Dependency Maintenance
+
+- Keep Dependabot enabled for every dependency surface in the repository.
+- Configure Dependabot for `uv`, GitHub Actions, and `pre-commit` when pre-commit hooks exist.
+- Add new Dependabot ecosystems when new manifests are introduced.
+- Dependabot pull requests must pass the same CI as human pull requests.
+
+## Testing Standards
+
+- The default test suite must not require real PrintNode credentials.
+- Use mocked HTTP tests for normal CI.
+- Gate live PrintNode API tests behind explicit environment variables.
+- Add or update tests for behavior changes.
+- Do not remove coverage just because legacy tests are awkward.
+
+## Release Standards
+
+- Do not publish releases from unreviewed local state.
+- Build and validate distributions before release.
+- Use TestPyPI before first publishing under a new distribution name.
+- Update `CHANGELOG.md` for user-visible changes.
+- Keep release notes clear about whether this is an official PrintNode release or a community-maintained fork.
+- Preserve `printnodeapi` as the import package even if the PyPI distribution name changes.
+
+## Local Verification
+
+Use `uv` by default once the project has been modernized:
+
+```sh
+uv sync
+uv run pytest
+uv build
+uv run twine check dist/*
+```
+
+Until the `uv` migration lands, use the currently available test/build commands and note any missing tooling in the pull request body.
+
+## Code Agent Notes
+
+- Use `rg` or `fd` for searching.
+- Use `apply_patch` for file edits.
+- Do not overwrite user changes.
+- Do not run destructive git commands.
+- Prefer pull-request-backed work and summarize verification clearly.
+- Keep changes boring, reviewable, and well-tested.
+- Update the durable stewardship plan at `~/.codex/plans/printnode-python-stewardship.md` when major phases start, finish, or change.

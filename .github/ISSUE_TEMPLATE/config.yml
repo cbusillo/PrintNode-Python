@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: PrintNode API Documentation
+    url: https://www.printnode.com/en/docs/api/curl
+    about: Reference documentation for the PrintNode API.

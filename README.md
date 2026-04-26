@@ -1,5 +1,8 @@
 ## **PrintNode API Client Python Library**
 
+> [!NOTE]
+> This repository is being prepared as a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The current stewardship plan is to preserve the existing `printnodeapi` import path, migrate the default branch to `main`, modernize packaging with `pyproject.toml` and `uv`, and release only after CI, tests, and package publishing are in good shape.
+
 This is a Python library to interact with PrintNode's remote printing API. This client allows you to access the API's functions for quick use in Python scripts.
 
 ### Requirements
