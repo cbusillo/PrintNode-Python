@@ -79,13 +79,13 @@ class Auth:
         other_args = {}
         if fields is not None:
             other_args['data'] = json.dumps(fields)
-        if request_headers is None:
-            request_headers = self._headers
-        else:
-            request_headers.update(self._headers)
+        headers = {}
+        if request_headers is not None:
+            headers.update(request_headers)
+        headers.update(self._headers)
 
         if method == requests.patch:
-            request_headers.update({"Content-Type": "application/json"})
+            headers.update({"Content-Type": "application/json"})
 
         if self._sslcert is not None:
             other_args['verify'] = self._sslcert
@@ -94,11 +94,14 @@ class Auth:
             response = method(
                 url=url,
                 auth=self._auth,
-                headers=request_headers,
+                headers=headers,
                 **other_args)
 
         content_type = response.headers.get('content-type')
-        if content_type != 'application/json':
+        media_type = None
+        if content_type is not None:
+            media_type = content_type.split(';', 1)[0].strip().lower()
+        if media_type != 'application/json':
             template = 'Incorrect Content-Type "{}" for url "{}"'
             raise ValueError(template.format(content_type, url))
         response_obj = response.json()
@@ -213,5 +216,9 @@ class rewrite_requests_error:
     def __exit__(self, exc_type, exc_value, traceback):
         if exc_type is None:
             return
-        exc = self.mapping.get(exc_type, RequestError)
+        exc = RequestError
+        for request_exc, network_exc in self.mapping.items():
+            if issubclass(exc_type, request_exc):
+                exc = network_exc
+                break
         raise_from(exc(str(exc_value)), exc_value)
