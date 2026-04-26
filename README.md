@@ -1,7 +1,7 @@
 ## **PrintNode API Client Python Library**
 
 > [!NOTE]
-> This repository is a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The maintained distribution name is `printnode-community`; the import package is `printnode_community`.
+> This repository is a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The maintained project name is `printnode_community`.
 
 This is a Python library to interact with PrintNode's remote printing API. This client allows you to access the API's functions for quick use in Python scripts.
 

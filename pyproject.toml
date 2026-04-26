@@ -3,7 +3,7 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "printnode-community"
+name = "printnode_community"
 version = "0.3.0"
 description = "Community-maintained Python client for PrintNode's API"
 readme = "README.md"
@@ -37,9 +37,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/cbusillo/PrintNode-Python"
-Repository = "https://github.com/cbusillo/PrintNode-Python"
-Issues = "https://github.com/cbusillo/PrintNode-Python/issues"
+Homepage = "https://github.com/cbusillo/printnode_community"
+Repository = "https://github.com/cbusillo/printnode_community"
+Issues = "https://github.com/cbusillo/printnode_community/issues"
 "Upstream Repository" = "https://github.com/PrintNode/PrintNode-Python"
 "PrintNode API Documentation" = "https://www.printnode.com/en/docs/api/curl"
 

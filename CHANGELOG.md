@@ -21,7 +21,7 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 
 ### Changed
 
-- Selected `printnode-community` as the maintained distribution name.
+- Selected `printnode_community` as the maintained project, distribution, and import name.
 - Documented the plan to migrate the default branch from `master` to `main`.
 - Migrated the default branch from `master` to `main`.
 - Replaced legacy `setup.py` packaging with `pyproject.toml`.
