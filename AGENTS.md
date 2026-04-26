@@ -41,7 +41,7 @@ This repository is maintained as a careful, community-oriented Python client for
 
 - Do not publish releases from unreviewed local state.
 - Build and validate distributions before release.
-- Use TestPyPI before first publishing under a new distribution name.
+- Prefer TestPyPI before first publishing under a new distribution name, but allow skipping it when CI, build metadata checks, and release-tag guards are sufficient.
 - Run the manual `Publish` workflow from a `v*` release tag only.
 - Keep the `testpypi` environment unblocked by manual review.
 - Keep the `pypi` environment protected by maintainer approval.
