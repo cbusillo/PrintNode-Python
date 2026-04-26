@@ -1,7 +1,7 @@
 import pytest
 
-from printnodeapi.accounts import Accounts
-from printnodeapi.model import ModelFactory
+from printnode_api.accounts import Accounts
+from printnode_api.model import ModelFactory
 
 
 class FakeAuth:

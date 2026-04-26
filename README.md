@@ -1,7 +1,7 @@
 ## **PrintNode API Client Python Library**
 
 > [!NOTE]
-> This repository is a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The maintained distribution name is `printnode-api`; new code should import `printnode_api`, and the historical `printnodeapi` import path remains supported for compatibility.
+> This repository is a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The maintained distribution name is `printnode-api`; the import package is `printnode_api`.
 
 This is a Python library to interact with PrintNode's remote printing API. This client allows you to access the API's functions for quick use in Python scripts.
 
@@ -68,12 +68,6 @@ from printnode_api import Gateway
 my_account_gateway = Gateway(apikey='my_api_key')
 ```
 
-The historical import path remains supported:
-
-```python
-from printnodeapi import Gateway
-```
-
 After creating a Gateway, you can access any requests as such:
 
 ```python
@@ -110,7 +104,7 @@ https://www.printnode.com/docs/api/curl/#whoami
 #### account(self)
 Returns an Account object of the currently authenticated account.
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 print(gateway.account.firstname)
@@ -127,7 +121,7 @@ https://www.printnode.com/docs/api/curl/#computers
 Given a set of computers, returns these computers. Given only one id, returns that computer.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 print(gateway.computers(computer=10027).name)
@@ -149,7 +143,7 @@ There are four ways this can be run:
 * *printer* str/int, *computer* int: Gives a printer found from either an id or the name of a printer, taken only from printers attached to the computer specified by the computer's id.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 print(gateway.printers(printer=50120).name)
@@ -180,7 +174,7 @@ There are five ways this can be run:
 * *printjob* int : Returns specific printjob.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 printjob_id = gateway.printjobs(computer=10027)[0].id
@@ -200,7 +194,7 @@ https://www.printnode.com/docs/api/curl/#printjob-creating
 Only one of uri, base64 and binary can be chosen.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 print(gateway.PrintJob(printer=50120,options={"copies":2},uri="a.pdf"))
@@ -218,7 +212,7 @@ https://www.printnode.com/docs/api/curl/#printjob-states
 Given a set of printjobs as a string (check https://www.printnode.com/docs/api/curl/#parameters for examples), returns a list of object type State. As each PrintJob can have many states, `states()` is a list of PrintJobs that each have a list of States.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 printjob_id = gateway.printjobs(computer=10027)[0].id
@@ -240,7 +234,7 @@ https://www.printnode.com/docs/api/curl/#account-tagging
 Given a *tagname*, returns the value of that tag.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 print(gateway.tag("Likes"))
@@ -255,7 +249,7 @@ Everything!
 Given a *tagname* and *tagvalue*, either creates a tag with specifed value if *tagname* doesn't exist, otherwise changes the value.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 gateway.ModifyTag("Likes","PrintNode")
@@ -272,7 +266,7 @@ PrintNode
 Given a *tagname*, deletes that tag. Returns True on successful deletion.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 gateway.ModifyTag("Likes","PrintNode")
@@ -292,7 +286,7 @@ https://www.printnode.com/docs/api/curl/#account-creation
 Creates an account with the specified values. The last three are optional.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 new_account = gateway.CreateAccount(
@@ -318,7 +312,7 @@ https://www.printnode.com/docs/api/curl/#account-deletion
 #### DeleteAccount(self)
 Deletes the child account that is currently authenticated. Accounts can only be deleted if authenticated by a parent account's api-key and a reference to the child account being deleted (e.g the child account's id)
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 new_account = gateway.CreateAccount(
@@ -345,7 +339,7 @@ https://www.printnode.com/docs/api/curl/#account-modification
 Given one or more arguments, changes the account details specified by the arguments.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 new_account = gateway.CreateAccount(
@@ -371,7 +365,7 @@ https://www.printnode.com/docs/api/curl/#account-apikeys
 #### apikey(self, api_key)
 Returns value of api-key specified by the argument.
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 new_account = gateway.CreateAccount(
@@ -396,7 +390,7 @@ Results:
 Creates an api-key with the api-key's reference given by the argument.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway = Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 new_account = gateway.CreateAccount(
@@ -422,7 +416,7 @@ Results:
 Deletes api-key specified by the argument.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 new_account = gateway.CreateAccount(
@@ -451,7 +445,7 @@ https://www.printnode.com/docs/api/curl/#account-delegated-auth
 Generates a clientkey for the account.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 new_account = gateway.CreateAccount(
@@ -488,7 +482,7 @@ This has three different outcomes:
 Having both set will default to showing the most recent version for the os argument.
 
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 for client in gateway.clients(client_ids="11-12"):
@@ -507,7 +501,7 @@ windows
 #### ModifyClientDownloads(self, client_id, enabled)
 Given a set of ids and either True or False, sets whether the clients are enabled or not. Returns a list of modified clients.
 ```python
-from printnodeapi import Gateway
+from printnode_api import Gateway
 
 gateway=Gateway(url='https://api.printnode.com',apikey='secretAPIKey')
 gateway.ModifyClientDownloads(11,False)

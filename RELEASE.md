@@ -1,12 +1,12 @@
 # Release Process
 
-This fork is being prepared for maintained releases under the `printnode-api` distribution name. New code should import `printnode_api`, and the historical `printnodeapi` import package remains supported for compatibility.
+This fork is being prepared for maintained releases under the `printnode-api` distribution name. The import package is `printnode_api`.
 
 ## Package Name
 
 The historical PyPI distribution name is `PrintNodeApi`, but upstream has not responded to maintainer handoff requests. This community-maintained fork will publish as `printnode-api` instead.
 
-PyPI normalizes `printnode-api` and `printnode_api` as the same project name. Prefer documenting `uv add printnode_api` and `python -m pip install printnode_api` so the install command visually matches the preferred `printnode_api` import namespace.
+PyPI normalizes `printnode-api` and `printnode_api` as the same project name. Prefer documenting `uv add printnode_api` and `python -m pip install printnode_api` so the install command visually matches the `printnode_api` import namespace.
 
 Before the first release, verify that `printnode-api` is still available on both PyPI and TestPyPI, then configure trusted publishing for that name.
 
@@ -55,10 +55,10 @@ git push origin vX.Y.Z
 Use a clean environment:
 
 ```sh
-uv venv /tmp/printnodeapi-release-smoke
-source /tmp/printnodeapi-release-smoke/bin/activate
+uv venv /tmp/printnode_api-release-smoke
+source /tmp/printnode_api-release-smoke/bin/activate
 uv pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ printnode_api
-python -c "from printnode_api import Gateway; from printnodeapi import Gateway as LegacyGateway; assert Gateway is LegacyGateway; print(Gateway.__name__)"
+python -c "from printnode_api import Gateway; print(Gateway.__name__)"
 deactivate
 ```
 
