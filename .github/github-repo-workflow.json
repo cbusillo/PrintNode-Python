@@ -1,0 +1,16 @@
+{
+  "defaultBranch": "main",
+  "importantWorkflows": ["CI", "Publish"],
+  "qaLabels": [],
+  "deployLabels": [],
+  "healthUrls": [
+    {
+      "name": "PyPI",
+      "url": "https://pypi.org/project/printnode-community/"
+    }
+  ],
+  "cleanup": {
+    "deleteMergedLocalBranches": true,
+    "removeMergedCleanWorktrees": true
+  }
+}

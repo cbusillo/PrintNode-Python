@@ -2,9 +2,9 @@
 
 ## Supported Versions
 
-This fork is being prepared for a maintained release. Until the first maintained release is published, security fixes target the current `main` branch.
-
-After the first release, supported versions will be documented here and in the release notes.
+Security fixes target the current `main` branch and maintained PyPI releases.
+Supported versions are documented here and in release notes as the project
+matures.
 
 ## Reporting a Vulnerability
 
