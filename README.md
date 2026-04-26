@@ -1,7 +1,7 @@
 ## **PrintNode API Client Python Library**
 
 > [!NOTE]
-> This repository is a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The maintained distribution name is `printnode-api`; the Python import path remains `printnodeapi` for compatibility.
+> This repository is a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The maintained distribution name is `printnode-api`; new code should import `printnode_api`, and the historical `printnodeapi` import path remains supported for compatibility.
 
 This is a Python library to interact with PrintNode's remote printing API. This client allows you to access the API's functions for quick use in Python scripts.
 
@@ -16,13 +16,13 @@ This is a Python library to interact with PrintNode's remote printing API. This 
 After the first maintained release is published, install the package with:
 
 ```sh
-uv add printnode-api
+uv add printnode_api
 ```
 
 or:
 
 ```sh
-python -m pip install printnode-api
+python -m pip install printnode_api
 ```
 
 Install from source with `uv`:
@@ -64,8 +64,14 @@ Release publishing is not enabled for general use yet. See [RELEASE.md](RELEASE.
 The default constructor for the Library is a Gateway, which is constructed with at minimum of one key-word argument, that being an api-key.
 
 ```python
-from printnodeapi.Gateway import Gateway
+from printnode_api import Gateway
 my_account_gateway = Gateway(apikey='my_api_key')
+```
+
+The historical import path remains supported:
+
+```python
+from printnodeapi import Gateway
 ```
 
 After creating a Gateway, you can access any requests as such:

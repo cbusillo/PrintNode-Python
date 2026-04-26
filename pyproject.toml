@@ -51,7 +51,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["printnodeapi"]
+packages = ["printnodeapi", "printnode_api"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
