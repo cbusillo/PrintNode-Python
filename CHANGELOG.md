@@ -16,6 +16,7 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 
 ### Changed
 
+- Selected `printnode-api` as the maintained distribution name while preserving the `printnodeapi` import package.
 - Documented the plan to migrate the default branch from `master` to `main`.
 - Migrated the default branch from `master` to `main`.
 - Replaced legacy `setup.py` packaging with `pyproject.toml`.

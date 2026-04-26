@@ -3,9 +3,9 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "PrintNodeApi"
+name = "printnode-api"
 version = "0.2.0"
-description = "Python client for PrintNode's API"
+description = "Community-maintained Python client for PrintNode's API"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
