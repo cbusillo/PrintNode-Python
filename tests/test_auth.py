@@ -3,7 +3,7 @@ import json
 import pytest
 import requests
 
-from printnodeapi.auth import (
+from printnode_api.auth import (
     Auth,
     ClientError,
     ConnectionError,
@@ -12,7 +12,7 @@ from printnodeapi.auth import (
     TimeoutError,
     TooManyRequests,
 )
-from printnodeapi.gateway import Gateway, Unauthorized
+from printnode_api.gateway import Gateway, Unauthorized
 
 API_ADDRESS = 'https://api.printnode.com'
 API_KEY = 'test-api-key'
@@ -52,7 +52,7 @@ def test_gateway(monkeypatch):
             'state': 'active',
         })
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     gateway = Gateway(url=API_ADDRESS, apikey=API_KEY)
     assert gateway.account.firstname == 'Ada'
@@ -65,7 +65,7 @@ def test_gateway_handles_unauthentication(monkeypatch):
             'message': 'API Key not found',
         })
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     gateway = Gateway(
         url=API_ADDRESS,
@@ -116,7 +116,7 @@ def test_auth_modes_send_expected_auth_and_headers(
         })
         return FakeResponse(200, {'ok': True})
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     result = Auth(url=API_ADDRESS, **kwargs).get('whoami')
 
@@ -141,7 +141,7 @@ def test_post_serializes_fields_without_mutating_headers(monkeypatch):
         })
         return FakeResponse(200, {'created': True})
 
-    monkeypatch.setattr('printnodeapi.auth.requests.post', fake_post)
+    monkeypatch.setattr('printnode_api.auth.requests.post', fake_post)
     headers = {'X-Custom': 'value'}
     fields = {'title': 'Example', 'qty': 2}
 
@@ -163,7 +163,7 @@ def test_post_with_no_fields_omits_request_body(monkeypatch):
         calls.append(other_args)
         return FakeResponse(200, {'created': True})
 
-    monkeypatch.setattr('printnodeapi.auth.requests.post', fake_post)
+    monkeypatch.setattr('printnode_api.auth.requests.post', fake_post)
 
     Auth(url=API_ADDRESS, apikey=API_KEY).post('printjobs')
 
@@ -177,7 +177,7 @@ def test_patch_adds_json_content_type_without_mutating_headers(monkeypatch):
         calls.append({'headers': headers, 'other_args': other_args})
         return FakeResponse(200, {'updated': True})
 
-    monkeypatch.setattr('printnodeapi.auth.requests.patch', fake_patch)
+    monkeypatch.setattr('printnode_api.auth.requests.patch', fake_patch)
     headers = {'X-Custom': 'value'}
 
     result = Auth(url=API_ADDRESS, clientkey='client-key').patch(
@@ -203,7 +203,7 @@ def test_sslcert_is_used_as_verify_path(monkeypatch, tmp_path):
         calls.append(other_args)
         return FakeResponse(200, {'deleted': True})
 
-    monkeypatch.setattr('printnodeapi.auth.requests.delete', fake_delete)
+    monkeypatch.setattr('printnode_api.auth.requests.delete', fake_delete)
 
     Auth(url=API_ADDRESS, apikey=API_KEY, sslcert=str(cert_path)).delete(
         'printjobs/123')
@@ -231,7 +231,7 @@ def test_request_maps_api_error_status_codes(
             'uid': 'error-uid',
         })
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     with pytest.raises(error_type) as error:
         Auth(url=API_ADDRESS, apikey=API_KEY).get('whoami')
@@ -246,7 +246,7 @@ def test_request_rejects_non_json_response(monkeypatch):
     def fake_get(url, auth, headers, **other_args):
         return FakeResponse(200, 'not json', content_type='text/html')
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     with pytest.raises(ValueError, match='Incorrect Content-Type'):
         Auth(url=API_ADDRESS, apikey=API_KEY).get('whoami')
@@ -259,7 +259,7 @@ def test_request_accepts_json_content_type_with_charset(monkeypatch):
             {'ok': True},
             content_type='application/json; charset=utf-8')
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     assert Auth(url=API_ADDRESS, apikey=API_KEY).get('whoami') == {'ok': True}
 
@@ -268,7 +268,7 @@ def test_request_raises_for_unexpected_status_code(monkeypatch):
     def fake_get(url, auth, headers, **other_args):
         return FakeResponse(302, {'redirect': True})
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     with pytest.raises(Exception, match='status code: 302'):
         Auth(url=API_ADDRESS, apikey=API_KEY).get('whoami')
@@ -285,7 +285,7 @@ def test_request_rewrites_requests_exceptions(
     def fake_get(url, auth, headers, **other_args):
         raise request_error
 
-    monkeypatch.setattr('printnodeapi.auth.requests.get', fake_get)
+    monkeypatch.setattr('printnode_api.auth.requests.get', fake_get)
 
     with pytest.raises(expected_error) as error:
         Auth(url=API_ADDRESS, apikey=API_KEY).get('whoami')

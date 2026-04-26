@@ -35,7 +35,7 @@ Live PrintNode API tests may be added, but they must be opt-in and gated by envi
 
 ## Compatibility
 
-Preserve the existing `printnodeapi` import path. Breaking changes require an explicit pull request, changelog entry, and release note.
+Preserve the `printnode_api` import path. Breaking changes require an explicit pull request, changelog entry, and release note.
 
 ## Releases
 
