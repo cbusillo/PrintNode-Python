@@ -7,7 +7,11 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 ## Unreleased
 
 - Added repository workflow defaults for future GitHub workflow sessions.
+- Added public-path coverage for model-instance computer, printer, and print
+  job lookups.
 - Updated post-release documentation now that `0.3.0` is published.
+- Removed stale private helper code that was unreachable from account and
+  computer APIs.
 
 ## 0.3.0 - 2026-04-26
 

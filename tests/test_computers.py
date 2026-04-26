@@ -1,7 +1,7 @@
 import pytest
 
 from printnode_community.computers import Computers
-from printnode_community.model import ModelFactory, Printer
+from printnode_community.model import Computer, ModelFactory, Printer, PrintJob
 
 from tests.test_model import computer_payload, printer_payload, printjob_payload
 
@@ -80,6 +80,20 @@ def test_get_printers_for_computer_builds_expected_url():
     assert [printer.name for printer in result] == ['Shipping Printer']
 
 
+def test_get_printers_accepts_computer_model_instance():
+    factory = ModelFactory()
+    computer = factory.create_computer(computer_payload(id=100))
+    computers, auth = make_computers({
+        '/computers/100/printers': [printer_payload()],
+    })
+
+    result = computers.get_printers(computer=computer)
+
+    assert isinstance(computer, Computer)
+    assert auth.get_calls == ['/computers/100/printers']
+    assert [printer.id for printer in result] == [200]
+
+
 def test_get_printer_by_id_returns_single_printer():
     computers, auth = make_computers({
         '/printers/200': [printer_payload(id=200)],
@@ -87,6 +101,20 @@ def test_get_printer_by_id_returns_single_printer():
 
     result = computers.get_printers(printer=200)
 
+    assert auth.get_calls == ['/printers/200']
+    assert result.id == 200
+
+
+def test_get_printer_by_model_instance_returns_single_printer():
+    factory = ModelFactory()
+    printer = factory.create_printer(printer_payload(id=200))
+    computers, auth = make_computers({
+        '/printers/200': [printer_payload(id=200)],
+    })
+
+    result = computers.get_printers(printer=printer)
+
+    assert isinstance(printer, Printer)
     assert auth.get_calls == ['/printers/200']
     assert result.id == 200
 
@@ -130,6 +158,20 @@ def test_get_printjob_by_id_returns_single_printjob():
 
     result = computers.get_printjobs(printjob=300)
 
+    assert auth.get_calls == ['/printjobs/300']
+    assert result.id == 300
+
+
+def test_get_printjob_by_model_instance_returns_single_printjob():
+    factory = ModelFactory()
+    printjob = factory.create_printjob(printjob_payload(id=300))
+    computers, auth = make_computers({
+        '/printjobs/300': [printjob_payload(id=300)],
+    })
+
+    result = computers.get_printjobs(printjob=printjob)
+
+    assert isinstance(printjob, PrintJob)
     assert auth.get_calls == ['/printjobs/300']
     assert result.id == 300
 
@@ -217,11 +259,3 @@ def test_pagination_params_validate_inputs(kwargs, error):
 
     with pytest.raises(error):
         computers.get_computers(**kwargs)
-
-
-def test_get_printer_id_accepts_printer_model_instance():
-    computers, _auth = make_computers()
-    printer = ModelFactory().create_printer(printer_payload(id=200))
-
-    assert isinstance(printer, Printer)
-    assert computers._get_printer_id(printer) == 200
