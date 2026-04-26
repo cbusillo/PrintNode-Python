@@ -130,12 +130,44 @@ def test_create_computer_maps_camel_case_and_ignores_jre():
     assert not hasattr(computer, 'jre')
 
 
+def test_create_computer_defaults_missing_optional_network_fields():
+    payload = computer_payload()
+    del payload['jre']
+    del payload['inet6']
+
+    computer = ModelFactory().create_computer(payload)
+
+    assert isinstance(computer, Computer)
+    assert computer.inet6 is None
+
+
 def test_create_printer_builds_nested_computer_and_capabilities():
     printer = ModelFactory().create_printer(printer_payload())
 
     assert printer.computer.name == 'Office Computer'
     assert isinstance(printer.capabilities, Capabilities)
     assert printer.capabilities.supports_custom_paper_size is True
+
+
+def test_create_printer_defaults_missing_optional_nested_fields():
+    payload = printer_payload()
+    del payload['computer']
+    del payload['capabilities']
+
+    printer = ModelFactory().create_printer(payload)
+
+    assert printer.computer is None
+    assert printer.capabilities is None
+
+
+def test_create_printer_preserves_null_nested_fields():
+    printer = ModelFactory().create_printer(printer_payload(
+        computer=None,
+        capabilities=None,
+    ))
+
+    assert printer.computer is None
+    assert printer.capabilities is None
 
 
 def test_create_printjob_defaults_optional_fields():
@@ -146,6 +178,15 @@ def test_create_printjob_defaults_optional_fields():
     assert printjob.pages is None
     assert printjob.qty == 1
     assert printjob.options == {}
+
+
+def test_create_printjob_defaults_missing_printer():
+    payload = printjob_payload()
+    del payload['printer']
+
+    printjob = ModelFactory().create_printjob(payload)
+
+    assert printjob.printer is None
 
 
 def test_create_printjob_preserves_server_supplied_optional_fields():
