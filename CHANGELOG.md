@@ -18,6 +18,11 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 - Documented the plan to migrate the default branch from `master` to `main`.
 - Migrated the default branch from `master` to `main`.
 - Replaced legacy `setup.py` packaging with `pyproject.toml`.
+- Replaced legacy live-credential test guidance with credential-free `uv` test instructions.
+
+### Removed
+
+- Removed stale placeholder credential and fixture files from the legacy live test setup.
 
 ### Notes
 

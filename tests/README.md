@@ -1,9 +1,19 @@
 # Testing
 
-##Requirements:
+The default test suite is credential-free and must not call the live PrintNode API.
 
-* py.test
+Run tests with:
 
-##Using the tests
+```sh
+uv run pytest
+```
 
-Firstly change the information in *credentials.py* to your own api-key and the (first) name used in your account. For python3, ./test inside the base folder. Python 2.7 requires the command `python -m pytest` to be executed.
+Package verification uses the same checks as CI:
+
+```sh
+uv run pytest
+uv build
+uv run twine check dist/*
+```
+
+Live PrintNode API tests may be added later, but they must be opt-in and gated by explicit environment variables. Do not commit real API keys, account credentials, customer data, or live API fixtures.
