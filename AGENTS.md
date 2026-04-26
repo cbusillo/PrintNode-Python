@@ -42,6 +42,10 @@ This repository is maintained as a careful, community-oriented Python client for
 - Do not publish releases from unreviewed local state.
 - Build and validate distributions before release.
 - Use TestPyPI before first publishing under a new distribution name.
+- Run the manual `Publish` workflow from a `v*` release tag only.
+- Keep the `testpypi` environment unblocked by manual review.
+- Keep the `pypi` environment protected by maintainer approval.
+- Trusted publishers must match project `printnode_community`, owner `cbusillo`, repository `printnode_community`, workflow `publish.yml`, and environment `testpypi` or `pypi`.
 - Update `CHANGELOG.md` for user-visible changes.
 - Keep release notes clear about whether this is an official PrintNode release or a community-maintained fork.
 - Preserve `printnode_community` as the import package.

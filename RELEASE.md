@@ -8,7 +8,8 @@ The historical PyPI distribution name is `PrintNodeApi`, but upstream has not re
 
 PyPI normalizes `printnode-community` and `printnode_community` as the same project name. Prefer documenting `uv add printnode_community` and `python -m pip install printnode_community` so the install command visually matches the import namespace.
 
-Before the first release, verify that `printnode_community` is still available on both PyPI and TestPyPI, then configure trusted publishing for that name.
+Before the first release, verify that `printnode_community` is still available
+on both PyPI and TestPyPI, then configure trusted publishing for that name.
 
 ## Versioning
 
@@ -66,10 +67,42 @@ deactivate
 
 Configure two GitHub environments before publishing:
 
-- `testpypi`
-- `pypi`
+- `testpypi`: no required reviewer, so TestPyPI dry runs do not pause.
+- `pypi`: require maintainer approval before production publishing.
 
-Both environments should require manual approval. Configure each environment as a trusted publisher in the corresponding PyPI project before running the workflow.
+Configure each environment as a trusted publisher in the corresponding PyPI
+project before running the workflow. TestPyPI and PyPI are separate services;
+both need their own pending publisher.
+
+Use these exact values on TestPyPI:
+
+```text
+Project name: printnode_community
+Owner: cbusillo
+Repository: printnode_community
+Workflow: publish.yml
+Environment: testpypi
+```
+
+Use these exact values on PyPI:
+
+```text
+Project name: printnode_community
+Owner: cbusillo
+Repository: printnode_community
+Workflow: publish.yml
+Environment: pypi
+```
+
+If publish fails with `invalid-publisher`, compare the claims in the failed
+Actions log with the pending publisher. The expected TestPyPI claims include:
+
+```text
+sub: repo:cbusillo/printnode_community:environment:testpypi
+repository: cbusillo/printnode_community
+job_workflow_ref: cbusillo/printnode_community/.github/workflows/publish.yml@refs/tags/v0.3.0
+ref: refs/tags/v0.3.0
+```
 
 The `Publish` workflow uses GitHub OpenID Connect through `id-token: write`; do not add PyPI API tokens unless trusted publishing is unavailable.
 
