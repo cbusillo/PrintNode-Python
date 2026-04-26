@@ -160,7 +160,7 @@ class Computers:
             if len(printers) == 0:
                 raise LookupError('printer not found')
             elif len(printers) > 1:
-                printer_ids = ','.join(p.id for p in printers)
+                printer_ids = ','.join(str(p.id) for p in printers)
                 msg = 'multiple printers match destination: {}'.format(
                     printer_ids)
                 raise LookupError(msg)
