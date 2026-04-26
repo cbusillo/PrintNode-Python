@@ -8,6 +8,8 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 
 - Added repository workflow defaults for future GitHub workflow sessions.
 - Updated post-release documentation now that `0.3.0` is published.
+- Hardened model factory handling for missing or null optional nested PrintNode
+  response fields.
 
 ## 0.3.0 - 2026-04-26
 

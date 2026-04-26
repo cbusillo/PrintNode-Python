@@ -62,7 +62,7 @@ class ModelFactory:
 
     def create_computer(self, computer_dict):
         fields = self._underscore_keys(computer_dict)
-        del fields['jre']
+        fields.pop('jre', None)
         self._rename_field(fields, 'inet_6', 'inet6')
         return safe_tuple_populate(Computer, fields)
 
@@ -71,10 +71,9 @@ class ModelFactory:
 
     def create_printer(self, printer_dict):
         fields = self._underscore_keys(printer_dict)
-        fields['computer'] = self.create_computer(fields['computer'])
-        if fields['capabilities']:
-            fields['capabilities'] = self.create_capabilities(
-                fields['capabilities'])
+        self._create_nested_model(fields, 'computer', self.create_computer)
+        self._create_nested_model(
+            fields, 'capabilities', self.create_capabilities)
         return safe_tuple_populate(Printer, fields)
 
     def create_capabilities(self, capabilities_dict):
@@ -86,7 +85,7 @@ class ModelFactory:
 
     def create_printjob(self, printjob_dict):
         fields = self._underscore_keys(printjob_dict)
-        fields['printer'] = self.create_printer(fields['printer'])
+        self._create_nested_model(fields, 'printer', self.create_printer)
         fields.setdefault('content', None)
         fields.setdefault('pages', None)
         fields.setdefault('qty', 1)
@@ -109,9 +108,15 @@ class ModelFactory:
             for k, v in input_dict.items()}
 
     def _rename_field(self, obj_dict, old_name, new_name):
+        if old_name not in obj_dict:
+            return
         assert new_name not in obj_dict
         obj_dict[new_name] = obj_dict[old_name]
         del obj_dict[old_name]
+
+    def _create_nested_model(self, fields, field_name, factory):
+        if field_name in fields and fields[field_name] is not None:
+            fields[field_name] = factory(fields[field_name])
 
     def _map(self, f, iter):
         return list(map(f, iter))
