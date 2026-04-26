@@ -1,6 +1,5 @@
-from .model import Computer, Model, Printer, PrintJob, Scale, State
+from .model import Computer, Model, Printer, PrintJob
 from future.types import newbytes
-import json
 import base64 as base_64
 import sys
 
@@ -205,12 +204,6 @@ class Computers:
 
         return printjob_id
 
-    def _native(self, obj):
-        if hasattr(obj, '__native__'):
-            return obj.__native__()
-        else:
-            return obj
-
     def _get_computer_ids(self, computer):
         if isinstance(computer, int):
             return [computer]
@@ -246,22 +239,6 @@ class Computers:
         else:
             raise TypeError(str(type(model)))
 
-    def _get_printer_ids(self, printer):
-        if isinstance(printer, int):
-            return [printer]
-        elif isinstance(printer, Printer):
-            return [Printer.id]
-        elif printer is None or isinstance(printer, str):
-            printers = {
-                self._factory.create_printer(printer_dict)
-                for printer_dict in self._auth.get('/printer')}
-            if isinstance(printer, str):
-                printers = {
-                    p for p in printers if p.name == printer}
-            return printers
-        else:
-            raise TypeError('printer: "{}"'.format(type(printer)))
-
     def _is_multi_query(self, obj):
         if obj is None:
             return True
@@ -273,15 +250,6 @@ class Computers:
             return False
         else:
             raise TypeError('type "{}" unsupported'.format(type(obj)))
-
-    def _get_printer_by_name(self, printer_name, computer_id=None):
-        assert isinstance(printer_name, str)
-        assert not computer_id or isinstance(computer_id, int)
-        printers = self.get_printers(computer=computer_id)
-        return [
-            printer
-            for printer in printers
-            if printer.name == printer_name]
 
     def _create_pagination_params(self, limit, after, dir):
         params = []
@@ -302,16 +270,3 @@ class Computers:
                 raise TypeError("dir must equal 'asc' or 'desc'")
         if len(params) > 0:
             return '&'.join(params)
-
-class LookupFailedError(RuntimeError):
-
-    def __init__(self, obj_name, field, value):
-        msg = 'Failed to find a matching {} with {} of {}'.format(
-            obj_name,
-            field,
-            value)
-        super(RuntimeError, self).__init__(msg)
-
-        self.obj_name = obj_name
-        self.field = field
-        self.value = value
