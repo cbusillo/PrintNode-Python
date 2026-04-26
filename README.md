@@ -43,6 +43,10 @@ uv build
 uv run twine check dist/*
 ```
 
+### Releases
+
+Release publishing is not enabled for general use yet. See [RELEASE.md](RELEASE.md) for the release process, current package-name blocker, and TestPyPI/PyPI workflow requirements.
+
 ### Getting Started
 
 The default constructor for the Library is a Gateway, which is constructed with at minimum of one key-word argument, that being an api-key.
