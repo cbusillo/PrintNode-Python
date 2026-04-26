@@ -48,7 +48,7 @@ This repository is maintained as a careful, community-oriented Python client for
 
 ## Local Verification
 
-Use `uv` by default once the project has been modernized:
+Use `uv` by default:
 
 ```sh
 uv sync
@@ -57,7 +57,7 @@ uv build
 uv run twine check dist/*
 ```
 
-Until the `uv` migration lands, use the currently available test/build commands and note any missing tooling in the pull request body.
+If a command cannot be run locally, mention why in the pull request body.
 
 ## Code Agent Notes
 

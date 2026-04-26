@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "PrintNodeApi"
+version = "0.2.0"
+description = "Python client for PrintNode's API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "PrintNode", email = "support@printnode.com" },
+]
+maintainers = [
+    { name = "Community maintainers" },
+]
+keywords = ["printnode", "printing", "api", "client"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "future>=1.0.0",
+    "requests>=2.32.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/cbusillo/PrintNode-Python"
+Repository = "https://github.com/cbusillo/PrintNode-Python"
+Issues = "https://github.com/cbusillo/PrintNode-Python/issues"
+"Upstream Repository" = "https://github.com/PrintNode/PrintNode-Python"
+"PrintNode API Documentation" = "https://www.printnode.com/en/docs/api/curl"
+
+[dependency-groups]
+dev = [
+    "build>=1.2.2.post1",
+    "pytest>=8.3.5",
+    "twine>=6.1.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["printnodeapi"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
