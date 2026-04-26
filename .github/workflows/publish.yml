@@ -96,10 +96,10 @@ jobs:
 
       - name: Publish to TestPyPI
         if: inputs.repository == 'testpypi'
-        uses: pypa/gh-action-pypi-publish@v1.9.0
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
 
       - name: Publish to PyPI
         if: inputs.repository == 'pypi'
-        uses: pypa/gh-action-pypi-publish@v1.9.0
+        uses: pypa/gh-action-pypi-publish@release/v1

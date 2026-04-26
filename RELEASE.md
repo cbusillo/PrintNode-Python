@@ -69,7 +69,9 @@ deactivate
 Configure two GitHub environments before publishing:
 
 - `testpypi`: no required reviewer, so TestPyPI dry runs do not pause.
-- `pypi`: require maintainer approval before production publishing.
+- `pypi`: no GitHub environment reviewer. Production approval happens by
+  merging the release PR, creating the release tag, and manually dispatching
+  the publish workflow from that tag.
 
 Configure each environment as a trusted publisher in the corresponding PyPI
 project before running the workflow. TestPyPI and PyPI are separate services;
