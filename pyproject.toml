@@ -3,7 +3,7 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "printnode-api"
+name = "printnode-community"
 version = "0.3.0"
 description = "Community-maintained Python client for PrintNode's API"
 readme = "README.md"
@@ -51,7 +51,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["printnode_api"]
+packages = ["printnode_community"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

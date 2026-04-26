@@ -470,7 +470,7 @@ wheels = [
 ]
 
 [[package]]
-name = "printnode-api"
+name = "printnode-community"
 version = "0.3.0"
 source = { editable = "." }
 dependencies = [

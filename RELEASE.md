@@ -1,14 +1,14 @@
 # Release Process
 
-This fork is being prepared for maintained releases under the `printnode-api` distribution name. The import package is `printnode_api`.
+This fork is being prepared for maintained releases under the `printnode-community` distribution name. The import package is `printnode_community`.
 
 ## Package Name
 
-The historical PyPI distribution name is `PrintNodeApi`, but upstream has not responded to maintainer handoff requests. This community-maintained fork will publish as `printnode-api` instead.
+The historical PyPI distribution name is `PrintNodeApi`, but upstream has not responded to maintainer handoff requests. This community-maintained fork will publish as `printnode-community` instead.
 
-PyPI normalizes `printnode-api` and `printnode_api` as the same project name. Prefer documenting `uv add printnode_api` and `python -m pip install printnode_api` so the install command visually matches the `printnode_api` import namespace.
+PyPI normalizes `printnode-community` and `printnode_community` as the same project name. Prefer documenting `uv add printnode_community` and `python -m pip install printnode_community` so the install command visually matches the `printnode_community` import namespace.
 
-Before the first release, verify that `printnode-api` is still available on both PyPI and TestPyPI, then configure trusted publishing for that name.
+Before the first release, verify that `printnode-community` is still available on both PyPI and TestPyPI, then configure trusted publishing for that name.
 
 ## Versioning
 
@@ -22,7 +22,7 @@ Keep the package version in `pyproject.toml` and the top `CHANGELOG.md` release 
 
 ## Pre-Release Checklist
 
-1. Confirm `printnode-api` is still available and PyPI/TestPyPI trusted publisher configuration is ready.
+1. Confirm `printnode-community` is still available and PyPI/TestPyPI trusted publisher configuration is ready.
 2. Confirm `main` is green in CI.
 3. Create a release branch from `main`.
 4. Update `pyproject.toml` with the release version.
@@ -55,10 +55,10 @@ git push origin vX.Y.Z
 Use a clean environment:
 
 ```sh
-uv venv /tmp/printnode_api-release-smoke
-source /tmp/printnode_api-release-smoke/bin/activate
-uv pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ printnode_api
-python -c "from printnode_api import Gateway; print(Gateway.__name__)"
+uv venv /tmp/printnode_community-release-smoke
+source /tmp/printnode_community-release-smoke/bin/activate
+uv pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ printnode_community
+python -c "from printnode_community import Gateway; print(Gateway.__name__)"
 deactivate
 ```
 

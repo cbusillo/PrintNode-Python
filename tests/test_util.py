@@ -1,6 +1,6 @@
 import pytest
 
-from printnode_api import util
+from printnode_community import util
 
 
 @pytest.mark.parametrize('expected,input', [
