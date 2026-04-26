@@ -46,9 +46,9 @@ git push origin vX.Y.Z
 ```
 
 10. Create a GitHub Release from the tag using the changelog section as release notes.
-11. Run the manual `Publish` workflow for TestPyPI first.
+11. Run the manual `Publish` workflow from the release tag for TestPyPI first.
 12. Install from TestPyPI in a clean environment and smoke-test imports.
-13. Run the manual `Publish` workflow for PyPI only after TestPyPI passes.
+13. Run the manual `Publish` workflow from the release tag for PyPI only after TestPyPI passes.
 
 ## TestPyPI Smoke Test
 
