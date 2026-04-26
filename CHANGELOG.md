@@ -13,6 +13,7 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 - Added modern Python project metadata in `pyproject.toml`.
 - Added an initial `uv` development workflow.
 - Added release process documentation and a manual trusted-publishing workflow scaffold.
+- Added `printnode_api` as the preferred import namespace while keeping `printnodeapi` for compatibility.
 
 ### Changed
 
