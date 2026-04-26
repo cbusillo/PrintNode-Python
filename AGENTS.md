@@ -7,6 +7,8 @@ This repository is maintained as a careful, community-oriented Python client for
 ## Branch and PR Rules
 
 - The default branch is `main`.
+- Keep repo workflow defaults in `.github/github-repo-workflow.json` so future
+  GitHub workflow sessions can discover important workflows and cleanup policy.
 - Do not commit directly to `main`.
 - Use a focused branch and pull request for every meaningful change.
 - Keep pull requests small enough to review.

@@ -13,7 +13,7 @@ This is a Python library to interact with PrintNode's remote printing API. This 
 
 ### Installation
 
-After the first maintained release is published, install the package with:
+Install the maintained community package with:
 
 ```sh
 uv add printnode_community
@@ -37,8 +37,6 @@ For editable development installs, use:
 uv pip install -e .
 ```
 
-Until the first maintained release is published, prefer installing from a reviewed Git tag or branch rather than relying on an unpublished local build.
-
 ### Development
 
 Install development dependencies and run tests with:
@@ -57,7 +55,9 @@ uv run twine check dist/*
 
 ### Releases
 
-Release publishing is not enabled for general use yet. See [RELEASE.md](RELEASE.md) for the release process and TestPyPI/PyPI workflow requirements.
+Maintained releases are published to PyPI from reviewed release tags. See
+[RELEASE.md](RELEASE.md) for the release process and TestPyPI/PyPI workflow
+requirements.
 
 ### Getting Started
 
