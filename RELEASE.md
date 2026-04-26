@@ -1,14 +1,14 @@
 # Release Process
 
-This fork is being prepared for maintained releases under the `printnode-community` distribution name. The import package is `printnode_community`.
+This fork is being prepared for maintained releases under the `printnode_community` project name.
 
 ## Package Name
 
-The historical PyPI distribution name is `PrintNodeApi`, but upstream has not responded to maintainer handoff requests. This community-maintained fork will publish as `printnode-community` instead.
+The historical PyPI distribution name is `PrintNodeApi`, but upstream has not responded to maintainer handoff requests. This community-maintained fork will publish as `printnode_community` instead.
 
-PyPI normalizes `printnode-community` and `printnode_community` as the same project name. Prefer documenting `uv add printnode_community` and `python -m pip install printnode_community` so the install command visually matches the `printnode_community` import namespace.
+PyPI normalizes `printnode-community` and `printnode_community` as the same project name. Prefer documenting `uv add printnode_community` and `python -m pip install printnode_community` so the install command visually matches the import namespace.
 
-Before the first release, verify that `printnode-community` is still available on both PyPI and TestPyPI, then configure trusted publishing for that name.
+Before the first release, verify that `printnode_community` is still available on both PyPI and TestPyPI, then configure trusted publishing for that name.
 
 ## Versioning
 
@@ -22,7 +22,7 @@ Keep the package version in `pyproject.toml` and the top `CHANGELOG.md` release 
 
 ## Pre-Release Checklist
 
-1. Confirm `printnode-community` is still available and PyPI/TestPyPI trusted publisher configuration is ready.
+1. Confirm `printnode_community` is still available and PyPI/TestPyPI trusted publisher configuration is ready.
 2. Confirm `main` is green in CI.
 3. Create a release branch from `main`.
 4. Update `pyproject.toml` with the release version.
