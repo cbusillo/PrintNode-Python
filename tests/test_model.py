@@ -1,4 +1,4 @@
-from printnode_api.model import (
+from printnode_community.model import (
     Account,
     Capabilities,
     Computer,

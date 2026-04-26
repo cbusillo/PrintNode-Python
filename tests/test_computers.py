@@ -1,7 +1,7 @@
 import pytest
 
-from printnode_api.computers import Computers
-from printnode_api.model import ModelFactory, Printer
+from printnode_community.computers import Computers
+from printnode_community.model import ModelFactory, Printer
 
 from tests.test_model import computer_payload, printer_payload, printjob_payload
 

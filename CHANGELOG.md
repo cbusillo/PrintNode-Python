@@ -17,11 +17,11 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 - Added modern Python project metadata in `pyproject.toml`.
 - Added an initial `uv` development workflow.
 - Added release process documentation and a manual trusted-publishing workflow scaffold.
-- Added `printnode_api` as the import namespace.
+- Added `printnode_community` as the import namespace.
 
 ### Changed
 
-- Selected `printnode-api` as the maintained distribution name.
+- Selected `printnode-community` as the maintained distribution name.
 - Documented the plan to migrate the default branch from `master` to `main`.
 - Migrated the default branch from `master` to `main`.
 - Replaced legacy `setup.py` packaging with `pyproject.toml`.

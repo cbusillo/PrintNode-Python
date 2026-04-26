@@ -19,7 +19,7 @@ This repository is maintained as a careful, community-oriented Python client for
 - Use `pyproject.toml` as the project source of truth.
 - Use `uv` for local development, dependency locking, testing, and builds.
 - Keep `uv.lock` committed for reproducible development and CI once `uv` is introduced.
-- Preserve the `printnode_api` import path unless a breaking-change pull request explicitly changes it.
+- Preserve the `printnode_community` import path unless a breaking-change pull request explicitly changes it.
 - Prefer modern Python packaging practices while avoiding unnecessary rewrites.
 
 ## Dependency Maintenance
@@ -44,7 +44,7 @@ This repository is maintained as a careful, community-oriented Python client for
 - Use TestPyPI before first publishing under a new distribution name.
 - Update `CHANGELOG.md` for user-visible changes.
 - Keep release notes clear about whether this is an official PrintNode release or a community-maintained fork.
-- Preserve `printnode_api` as the import package.
+- Preserve `printnode_community` as the import package.
 
 ## Local Verification
 
