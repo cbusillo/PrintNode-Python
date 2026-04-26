@@ -1,7 +1,7 @@
 ## **PrintNode API Client Python Library**
 
 > [!NOTE]
-> This repository is being prepared as a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The current stewardship plan is to preserve the existing `printnodeapi` import path, use `main` as the default branch, modernize packaging with `pyproject.toml` and `uv`, and release only after CI, tests, and package publishing are in good shape.
+> This repository is a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The maintained distribution name is `printnode-api`; the Python import path remains `printnodeapi` for compatibility.
 
 This is a Python library to interact with PrintNode's remote printing API. This client allows you to access the API's functions for quick use in Python scripts.
 
@@ -12,6 +12,18 @@ This is a Python library to interact with PrintNode's remote printing API. This 
 * future
 
 ### Installation
+
+After the first maintained release is published, install the package with:
+
+```sh
+uv add printnode-api
+```
+
+or:
+
+```sh
+python -m pip install printnode-api
+```
 
 Install from source with `uv`:
 
@@ -25,7 +37,7 @@ For editable development installs, use:
 uv pip install -e .
 ```
 
-This project is being prepared for a maintained package release. Until then, prefer installing from a reviewed Git tag or branch rather than relying on an unpublished local build.
+Until the first maintained release is published, prefer installing from a reviewed Git tag or branch rather than relying on an unpublished local build.
 
 ### Development
 
@@ -45,7 +57,7 @@ uv run twine check dist/*
 
 ### Releases
 
-Release publishing is not enabled for general use yet. See [RELEASE.md](RELEASE.md) for the release process, current package-name blocker, and TestPyPI/PyPI workflow requirements.
+Release publishing is not enabled for general use yet. See [RELEASE.md](RELEASE.md) for the release process and TestPyPI/PyPI workflow requirements.
 
 ### Getting Started
 
