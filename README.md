@@ -1,19 +1,47 @@
 ## **PrintNode API Client Python Library**
 
 > [!NOTE]
-> This repository is being prepared as a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The current stewardship plan is to preserve the existing `printnodeapi` import path, migrate the default branch to `main`, modernize packaging with `pyproject.toml` and `uv`, and release only after CI, tests, and package publishing are in good shape.
+> This repository is being prepared as a community-maintained fork of the PrintNode Python API client. It is not an official PrintNode release unless PrintNode explicitly confirms maintainership or transfer. The current stewardship plan is to preserve the existing `printnodeapi` import path, use `main` as the default branch, modernize packaging with `pyproject.toml` and `uv`, and release only after CI, tests, and package publishing are in good shape.
 
 This is a Python library to interact with PrintNode's remote printing API. This client allows you to access the API's functions for quick use in Python scripts.
 
 ### Requirements
 
-* Python 2.x or 3.x
-* python-requests
-* python-future
+* Python 3.10+
+* requests
+* future
 
 ### Installation
 
-This is installed as a module by executing `python3 setup.py install` with root permissions.
+Install from source with `uv`:
+
+```sh
+uv sync
+```
+
+For editable development installs, use:
+
+```sh
+uv pip install -e .
+```
+
+This project is being prepared for a maintained package release. Until then, prefer installing from a reviewed Git tag or branch rather than relying on an unpublished local build.
+
+### Development
+
+Install development dependencies and run tests with:
+
+```sh
+uv sync
+uv run pytest
+```
+
+Build and validate package artifacts with:
+
+```sh
+uv build
+uv run twine check dist/*
+```
 
 ### Getting Started
 

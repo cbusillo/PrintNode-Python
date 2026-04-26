@@ -13,9 +13,7 @@ Thank you for helping maintain this PrintNode API client. This fork aims to be c
 
 ## Development
 
-The project is being modernized around `pyproject.toml` and `uv`. Until that migration is complete, prefer the commands documented in the current pull request.
-
-Once `uv` is available, the standard local workflow will be:
+The project uses `pyproject.toml` and `uv`. The standard local workflow is:
 
 ```sh
 uv sync

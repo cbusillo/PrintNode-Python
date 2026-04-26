@@ -10,11 +10,14 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 
 - Added repository governance documentation for community maintenance.
 - Added contribution, security, issue, and pull request guidance.
+- Added modern Python project metadata in `pyproject.toml`.
+- Added an initial `uv` development workflow.
 
 ### Changed
 
 - Documented the plan to migrate the default branch from `master` to `main`.
-- Documented the plan to modernize packaging around `pyproject.toml` and `uv`.
+- Migrated the default branch from `master` to `main`.
+- Replaced legacy `setup.py` packaging with `pyproject.toml`.
 
 ### Notes
 
