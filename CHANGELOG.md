@@ -6,6 +6,10 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 
 ## Unreleased
 
+- Nothing yet.
+
+## 0.3.0 - 2026-04-26
+
 ### Added
 
 - Added repository governance documentation for community maintenance.
