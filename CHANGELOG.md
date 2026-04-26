@@ -12,6 +12,8 @@ The format follows the spirit of Keep a Changelog, and this project intends to u
 - Updated post-release documentation now that `0.3.0` is published.
 - Removed stale private helper code that was unreachable from account and
   computer APIs.
+- Hardened model factory handling for missing or null optional nested PrintNode
+  response fields.
 
 ## 0.3.0 - 2026-04-26
 

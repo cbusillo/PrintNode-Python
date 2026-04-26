@@ -12,5 +12,7 @@
   "cleanup": {
     "deleteMergedLocalBranches": true,
     "removeMergedCleanWorktrees": true
-  }
+  },
+  "relatedRepos": [],
+  "validatedThrough": []
 }
