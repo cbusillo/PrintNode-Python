@@ -46,10 +46,9 @@ git tag -a vX.Y.Z -m "Release vX.Y.Z"
 git push origin vX.Y.Z
 ```
 
-10. Create a GitHub Release from the tag using the changelog section as release notes.
-11. Optionally run the manual `Publish` workflow from the release tag for TestPyPI.
-12. If TestPyPI is used, install from TestPyPI in a clean environment and smoke-test imports.
-13. Run the manual `Publish` workflow from the release tag for PyPI.
+10. Optionally run the manual `Publish` workflow from the release tag for TestPyPI.
+11. If TestPyPI is used, install from TestPyPI in a clean environment and smoke-test imports.
+12. Run the manual `Publish` workflow from the release tag for PyPI. The workflow creates the GitHub Release from the matching `CHANGELOG.md` section after the PyPI upload succeeds.
 
 ## Optional TestPyPI Smoke Test
 
