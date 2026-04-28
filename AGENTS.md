@@ -68,10 +68,6 @@ If a command cannot be run locally, mention why in the pull request body.
 
 ## Code Agent Notes
 
-- Use `rg` or `fd` for searching.
-- Use `apply_patch` for file edits.
-- Do not overwrite user changes.
-- Do not run destructive git commands.
 - Prefer pull-request-backed work and summarize verification clearly.
 - Keep changes boring, reviewable, and well-tested.
 - Update the durable stewardship plan at `~/.codex/plans/printnode-python-stewardship.md` when major phases start, finish, or change.
