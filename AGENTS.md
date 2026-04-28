@@ -20,7 +20,7 @@ This repository is maintained as a careful, community-oriented Python client for
 
 - Use `pyproject.toml` as the project source of truth.
 - Use `uv` for local development, dependency locking, testing, and builds.
-- Keep `uv.lock` committed for reproducible development and CI once `uv` is introduced.
+- Keep `uv.lock` committed for reproducible development and CI.
 - Preserve the `printnode_community` import path unless a breaking-change pull request explicitly changes it.
 - Prefer modern Python packaging practices while avoiding unnecessary rewrites.
 
@@ -68,10 +68,6 @@ If a command cannot be run locally, mention why in the pull request body.
 
 ## Code Agent Notes
 
-- Use `rg` or `fd` for searching.
-- Use `apply_patch` for file edits.
-- Do not overwrite user changes.
-- Do not run destructive git commands.
 - Prefer pull-request-backed work and summarize verification clearly.
 - Keep changes boring, reviewable, and well-tested.
 - Update the durable stewardship plan at `~/.codex/plans/printnode-python-stewardship.md` when major phases start, finish, or change.
