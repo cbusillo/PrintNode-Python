@@ -20,7 +20,7 @@ This repository is maintained as a careful, community-oriented Python client for
 
 - Use `pyproject.toml` as the project source of truth.
 - Use `uv` for local development, dependency locking, testing, and builds.
-- Keep `uv.lock` committed for reproducible development and CI once `uv` is introduced.
+- Keep `uv.lock` committed for reproducible development and CI.
 - Preserve the `printnode_community` import path unless a breaking-change pull request explicitly changes it.
 - Prefer modern Python packaging practices while avoiding unnecessary rewrites.
 
