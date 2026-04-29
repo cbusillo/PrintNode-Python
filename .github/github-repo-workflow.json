@@ -1,5 +1,38 @@
 {
   "defaultBranch": "main",
+  "projectType": "python-package",
+  "docs": {
+    "overview": "README.md",
+    "release": "RELEASE.md",
+    "testing": "tests/README.md",
+    "packageManifest": "pyproject.toml",
+    "lockfile": "uv.lock"
+  },
+  "qualityGate": {
+    "setup": {
+      "default": "uv sync --locked"
+    },
+    "test": {
+      "default": "uv run pytest"
+    },
+    "build": {
+      "package": "uv build",
+      "checkDistribution": "uv run twine check dist/*"
+    },
+    "release": {
+      "verify": "uv sync --locked && uv run pytest && rm -rf dist && uv build && uv run twine check dist/*"
+    },
+    "docsRequiredWhen": [
+      "behavior changes",
+      "api changes",
+      "config changes",
+      "packaging metadata changes",
+      "release workflow changes",
+      "dependency changes",
+      "public import path changes",
+      "upstream compatibility changes"
+    ]
+  },
   "importantWorkflows": ["CI", "Publish"],
   "qaLabels": [],
   "deployLabels": [],
@@ -13,6 +46,38 @@
     "deleteMergedLocalBranches": true,
     "removeMergedCleanWorktrees": true
   },
+  "githubSignals": {
+    "postMerge": {
+      "waitForActions": true,
+      "checkSecurityAndQuality": true
+    },
+    "capabilities": {
+      "codeScanning": "available",
+      "secretScanning": "not_enabled",
+      "dependabotAlerts": "available",
+      "securityAdvisories": "available"
+    },
+    "refreshWhen": [
+      "repo visibility changes",
+      "GitHub plan changes",
+      "security settings change",
+      "token permissions change"
+    ]
+  },
   "relatedRepos": [],
-  "validatedThrough": []
+  "validatedThrough": ["CI", "Publish"],
+  "metadataFreshness": {
+    "updateWhen": [
+      "docs routing changes",
+      "validation gates change",
+      "primary commands change",
+      "important workflows change",
+      "health endpoint changes",
+      "repo relationship changes",
+      "cleanup policy changes",
+      "release workflow changes",
+      "dependency or packaging metadata changes",
+      "public import path changes"
+    ]
+  }
 }
